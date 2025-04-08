@@ -13,7 +13,7 @@ To enhance the accuracy of translated bone structures, we introduce a trainable 
 Evaluations conducted on three public datasets demonstrate that our method outperforms existing unpaired MRI-to-CT translation approaches, achieving lower overall error rates. Moreover, in a downstream bone segmentation task, our approach exhibits superior performance in preserving the fidelity of bone structures.
 
 <p align="center">
-  <img src="imgs/net.jpg" width="600"/>
+  <img src="imgs/net.jpg" width="700"/>
 </p>
 
 ---
