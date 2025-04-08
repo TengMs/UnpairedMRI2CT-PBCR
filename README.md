@@ -13,7 +13,7 @@ To enhance the accuracy of translated bone structures, we introduce a trainable 
 Evaluations conducted on three public datasets demonstrate that our method outperforms existing unpaired MRI-to-CT translation approaches, achieving lower overall error rates. Moreover, in a downstream bone segmentation task, our approach exhibits superior performance in preserving the fidelity of bone structures.
 
 <p align="center">
-  <img src="imgs/net.jpg" width="700"/>
+  <img src="imgs/net.jpg" width="600"/>
 </p>
 
 ---
@@ -23,28 +23,28 @@ Evaluations conducted on three public datasets demonstrate that our method outpe
 It assumes that two directories host training images from domain A `/dataset/trainA` and from domain B `/dataset/trainB`, respectively.  
 Similarly, you need to prepare directories `/dataset/testA` and `/dataset/testB` for testing, and `/dataset/valA` and `/dataset/valB` for validation.
 
-<datasets>/
-├── <dataset_name>/
-│   ├── trainA/
-│   │   ├── slice_0.png
-│   │   ├── slice_1.png
-│   │   └── ...
-│   ├── trainB/
-│   │   ├── slice_0.png
-│   │   ├── slice_1.png
-│   │   └── ...
-│   ├── testA/
-│   │   ├── slice_0.png
-│   │   └── ...
-│   ├── testB/
-│   │   ├── slice_0.png
-│   │   └── ...
-│   ├── valA/
-│   │   ├── slice_0.png
-│   │   └── ...
-│   └── valB/
-│       ├── slice_0.png
-│       └── ...
+datasets/
+└── dataset_name/
+    ├── trainA/               # Training images for domain A
+    │   ├── slice_0.png
+    │   ├── slice_1.png
+    │   └── ...
+    ├── trainB/               # Training images for domain B
+    │   ├── slice_0.png
+    │   ├── slice_1.png
+    │   └── ...
+    ├── testA/                # Testing images for domain A
+    │   ├── slice_0.png
+    │   └── ...
+    ├── testB/                # Testing images for domain B
+    │   ├── slice_0.png
+    │   └── ...
+    ├── valA/                 # Validation images for domain A
+    │   ├── slice_0.png
+    │   └── ...
+    └── valB/                 # Validation images for domain B
+        ├── slice_0.png
+        └── ...
 ---
 
 ## 🚀 Training & Testing
