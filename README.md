@@ -1,40 +1,20 @@
-📝 Abstract
-Accurate MRI-to-CT translation holds significant clinical value as it enables the integration of complementary imaging information without requiring additional scans. Given the challenges in acquiring paired MRI and CT datasets, developing robust unpaired translation methods is crucial.
+# UnpairedMRI2CT-PCReg
+Repository for the paper "Path and Bone-Contour Regularized Unpaired MRI-to-CT Translation"
 
-However, current methods—primarily based on cycle consistency or contrastive learning—often struggle to translate anatomical features like bones, which are clearly visible in CT but not in MRI. This limits their effectiveness in critical tasks such as radiation therapy planning, where accurate bone representation is essential.
+## Abstract
+Accurate MRI-to-CT translation holds significant clinical value as it allows the integration of complementary imaging information without the need for additional imaging sessions. Given the practical challenges associated with acquiring paired MRI and CT scans, the development of robust methods capable of leveraging unpaired datasets is essential for advancing the MRI-to-CT translation. Current unpaired MRI-to-CT translation methods, which predominantly rely on cycle consistency and contrastive learning frameworks, frequently encounter challenges in accurately translating anatomical features that are highly discernible on CT but less distinguishable on MRI, such as bone structures. This limitation renders these approaches less suitable for applications in radiation therapy, where precise bone representation is essential for accurate treatment planning. To address this challenge, we propose a path- and bone-contour regularized approach for unpaired MRI-to-CT translation. In our method, MRI and CT images are projected to a shared latent space, where the MRI-to-CT mapping is modeled as a continuous flow governed by neural ordinary differential equations. The optimal mapping is obtained by minimizing the transition path length of the flow. To enhance the accuracy of translated bone structures, we introduce a trainable neural network to generate bone contours from MRI and implement mechanisms to directly and indirectly encourage the model to focus on bone contours and their adjacent regions. Evaluations conducted on three public datasets demonstrate that our method outperforms existing unpaired MRI-to-CT translation approaches, achieving lower overall error rates. Moreover, in a downstream bone segmentation task, our approach exhibits superior performance in preserving the fidelity of bone structures.
 
-💡 To address this, we propose a path- and bone-contour regularized unpaired MRI-to-CT translation approach. MRI and CT images are mapped into a shared latent space, and translation is modeled as a continuous flow via neural ODEs, optimized by minimizing the flow's path length.
+<!-- ![aa](imgs/net.jpg) -->
 
-To better capture bone structures, we:
-
-📐 Introduce a trainable network to generate bone contours from MRI
-
-🎯 Use both direct and indirect mechanisms to focus learning on contours and surrounding areas
-
-📊 Experiments on three public datasets show our method consistently outperforms existing approaches, especially in preserving bone structures—confirmed via downstream bone segmentation tasks.
-
-📂 Dataset Preparation
-🔧 The dataset loader script is located at:
-unaligned_dataset.py
-
-📁 Expected folder structure for unpaired data:
-
-
-./dataset/
-├── trainA/   # domain A (e.g., MRI)
-├── trainB/   # domain B (e.g., CT)
-├── valA/
-├── valB/
-├── testA/
-├── testB/
-🚀 Training & Testing
+## Prepare dataset  
+* [unaligned_dataset.py](../data/unaligned_dataset.py) includes a dataset class that can load unaligned/unpaired datasets.  
+It assumes that two directories to host training images from domain A /dataset/trainA and from domain B /dataset/trainB respectively.  
+Similarly, you need to prepare directories /dataset/testA and /dataset/testB for testing, and /dataset/valA and /dataset/valB for validation.
 
 
 
-# 🔧 Train the model
-python train.py --dataroot=./datasets/<dataset_name> --direction=AtoB --lambda_path=0.1 --tag=<dataset_name>
-
-# 🧪 Test the model
-python test.py --dataroot=./datasets/<dataset_name> --name=gp --direction=AtoB --tag=<dataset_name>
+## Training
+python train.py --dataroot=./datasets/<dataset_name> --direction=BtoA --lambda_path=0.1 --tag=<dataset_name>
+python test.py --dataroot=./datasets/<dataset_name> --name=gp --direction=BtoA --tag=<dataset_name>  
 
 
