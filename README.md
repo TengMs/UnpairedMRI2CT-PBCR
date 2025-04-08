@@ -23,6 +23,28 @@ Evaluations conducted on three public datasets demonstrate that our method outpe
 It assumes that two directories host training images from domain A `/dataset/trainA` and from domain B `/dataset/trainB`, respectively.  
 Similarly, you need to prepare directories `/dataset/testA` and `/dataset/testB` for testing, and `/dataset/valA` and `/dataset/valB` for validation.
 
+<datasets>/
+├── <dataset_name>/
+│   ├── trainA/
+│   │   ├── slice_0.png
+│   │   ├── slice_1.png
+│   │   └── ...
+│   ├── trainB/
+│   │   ├── slice_0.png
+│   │   ├── slice_1.png
+│   │   └── ...
+│   ├── testA/
+│   │   ├── slice_0.png
+│   │   └── ...
+│   ├── testB/
+│   │   ├── slice_0.png
+│   │   └── ...
+│   ├── valA/
+│   │   ├── slice_0.png
+│   │   └── ...
+│   └── valB/
+│       ├── slice_0.png
+│       └── ...
 ---
 
 ## 🚀 Training & Testing
